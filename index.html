@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oxidation & Reduction Study Game | Dr. Dan</title>
+<style>
+:root{
+  --ink:#263238;
+  --muted:#65727a;
+  --paper:#fffdf8;
+  --panel:#ffffff;
+  --line:#e7e2d7;
+  --red:#ff7d73;
+  --blue:#70b7e8;
+  --mint:#8fd8c8;
+  --gold:#f7c968;
+  --lav:#b9a3e6;
+  --pink:#f2a8c4;
+  --green:#69c28c;
+  --bad:#df6a67;
+  --shadow:0 10px 28px rgba(41,50,55,.10);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:Inter,ui-rounded,"SF Pro Rounded","Avenir Next",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(143,216,200,.20),transparent 28%),
+    radial-gradient(circle at 90% 10%,rgba(242,168,196,.18),transparent 25%),
+    linear-gradient(#fffdf8,#fffaf3);
+  min-height:100vh;
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.app{max-width:1180px;margin:0 auto;padding:24px}
+.hero{
+  background:rgba(255,255,255,.9);
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:24px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"e⁻";
+  position:absolute;
+  right:18px;
+  top:-18px;
+  font-size:120px;
+  color:rgba(112,183,232,.12);
+  font-weight:900;
+  transform:rotate(-8deg);
+}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#f3eee5;border-radius:999px;padding:7px 12px;
+  font-size:13px;font-weight:800;letter-spacing:.02em
+}
+h1{margin:10px 0 6px;font-size:clamp(30px,5vw,56px);line-height:1}
+.red{color:#e65e58}.blue{color:#4e9fd2}
+.subtitle{margin:8px 0 0;color:var(--muted);font-size:16px;max-width:820px}
+.mode-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0}
+.mode-btn{
+  border:1px solid var(--line);background:#fff;border-radius:18px;padding:14px 10px;
+  min-height:86px;font-weight:850;color:var(--ink);box-shadow:0 4px 14px rgba(40,45,48,.06)
+}
+.mode-btn small{display:block;font-weight:650;color:var(--muted);margin-top:5px;line-height:1.2}
+.mode-btn.active{outline:3px solid rgba(112,183,232,.28);border-color:#79bce7;background:#f8fcff}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;margin-top:18px}
+.card{
+  background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:24px;
+  box-shadow:var(--shadow);padding:20px
+}
+.toprow{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.mode-title{font-size:24px;font-weight:900;margin:0}
+.score{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{border-radius:999px;padding:7px 11px;background:#f4f1ea;font-weight:800;font-size:13px}
+.progress{height:9px;background:#eee8de;border-radius:99px;overflow:hidden;margin:14px 0 22px}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--blue));transition:.3s}
+.prompt{
+  font-size:20px;font-weight:800;line-height:1.45;margin:0 0 18px
+}
+.chem{
+  display:inline-block;
+  font-family:"Times New Roman",serif;
+  font-size:1.08em;
+  font-weight:700;
+  letter-spacing:.01em;
+}
+.answer-area{display:grid;gap:12px}
+.option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.option{
+  text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;
+  font-weight:750;transition:.15s
+}
+.option:hover{transform:translateY(-1px);border-color:#9bc9e6}
+.option.selected{background:#eef8ff;border-color:#6baed9;box-shadow:0 0 0 2px rgba(107,174,217,.14)}
+.field-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field label{display:block;font-size:13px;color:var(--muted);font-weight:800;margin-bottom:5px}
+input[type="text"],input[type="number"],select{
+  width:100%;border:1px solid #d9d4ca;background:#fff;border-radius:12px;padding:11px 12px;
+  color:var(--ink);outline:none
+}
+input:focus,select:focus{border-color:#6baed9;box-shadow:0 0 0 3px rgba(107,174,217,.14)}
+.equation-box{
+  background:#faf8f2;border:1px solid #ebe5d8;border-radius:16px;padding:16px;
+  font-size:20px;text-align:center;line-height:1.7;margin-bottom:14px
+}
+.coeffs{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px}
+.coeff input{width:62px;text-align:center;font-weight:800}
+.arrow{font-size:26px;font-weight:900;color:#6d7478}
+.btn-row{display:grid;grid-template-columns:1.45fr 1fr 1fr 1fr;gap:10px;margin-top:18px}
+.action{border:0;border-radius:14px;padding:12px 14px;font-weight:900}
+.primary{background:#4e9fd2;color:#fff}
+.secondary{background:#f3eee5;color:var(--ink)}
+.next{background:#263238;color:#fff}
+.feedback{
+  display:none;margin-top:16px;border-radius:16px;padding:14px 16px;line-height:1.45;font-weight:700
+}
+.feedback.good{display:block;background:#e9f8ef;border:1px solid #bde7ca;color:#255c39}
+.feedback.bad{display:block;background:#fff0ef;border:1px solid #f0c0bd;color:#7b3330}
+.hintbox{display:none;margin-top:12px;background:#fff9e8;border:1px solid #f0dd9b;border-radius:15px;padding:13px;line-height:1.5}
+.hintbox.show{display:block}
+.reference h3,.videos h3{margin:0 0 10px;font-size:18px}
+.reference{
+  background:#fffdf7;border:1px dashed #d6cdbd;border-radius:18px;padding:14px;margin-bottom:14px
+}
+.ref-list{margin:0;padding-left:19px;font-size:13px;line-height:1.55;color:#4e595f}
+.series{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12px;line-height:1.55;background:#f8f7f2;border-radius:12px;padding:10px;overflow:auto
+}
+.video-link{
+  display:block;text-decoration:none;color:var(--ink);font-weight:800;background:#fff;border:1px solid var(--line);
+  border-radius:13px;padding:10px 12px;margin-top:8px
+}
+.video-link:hover{border-color:#d78cad;background:#fff8fb}
+.step-list{display:grid;gap:8px;margin-top:10px}
+.step{
+  display:flex;gap:9px;align-items:flex-start;padding:8px;border-radius:12px;background:#faf8f2;font-size:13px;line-height:1.35
+}
+.step b{min-width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#e7f3fb;color:#3e82aa}
+.footer-note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.45}
+.celebrate{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.confetti{position:absolute;width:10px;height:18px;border-radius:4px;animation:fall 1.2s ease-out forwards}
+@keyframes fall{0%{transform:translateY(-15vh) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(680deg);opacity:0}}
+@media(max-width:950px){
+  .mode-grid{grid-template-columns:repeat(2,1fr)}
+  .main{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .app{padding:12px}.hero,.card{border-radius:20px;padding:16px}
+  .mode-grid{grid-template-columns:1fr}
+  .field-row,.option-grid{grid-template-columns:1fr}
+  .btn-row{grid-template-columns:1fr 1fr}
+  .prompt{font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="celebrate" id="celebrate"></div>
+<div class="app">
+  <section class="hero">
+    <span class="badge">⚡ Dr. Dan's REDOX Lab</span>
+    <h1><span class="red">Oxidation</span> &amp; <span class="blue">Reduction</span> Study Game</h1>
+    <p class="subtitle">Practice oxidation states, identifying oxidation/reduction and agents, activity-series predictions, and balancing redox reactions in acidic or basic solution.</p>
+  </section>
+
+  <nav class="mode-grid" id="modeGrid"></nav>
+
+  <div class="main">
+    <section class="card">
+      <div class="toprow">
+        <h2 class="mode-title" id="modeTitle">Assigning Oxidation States</h2>
+        <div class="score">
+          <span class="pill">Correct: <span id="correct">0</span></span>
+          <span class="pill">Streak: <span id="streak">0</span> 🔥</span>
+        </div>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+
+      <div id="questionArea"></div>
+
+      <div class="btn-row">
+        <button class="action primary" id="checkBtn">Check Answer</button>
+        <button class="action secondary" id="hintBtn">Hint</button>
+        <button class="action secondary" id="showBtn">Show Answer</button>
+        <button class="action next" id="nextBtn">New Question</button>
+      </div>
+      <div class="hintbox" id="hintBox"></div>
+      <div class="feedback" id="feedback"></div>
+    </section>
+
+    <aside>
+      <section class="card reference" id="referenceCard"></section>
+      <section class="card videos">
+        <h3>🎥 Helpful Dr. Dan Videos</h3>
+        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=oxidation%20numbers">Oxidation Numbers / Oxidation States ↗</a>
+        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=oxidation%20reduction%20redox">Oxidation &amp; Reduction / REDOX ↗</a>
+        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=activity%20series">Activity Series ↗</a>
+        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=acidic%20redox">Balancing REDOX in Acidic Solution ↗</a>
+        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=basic%20redox">Balancing REDOX in Basic Solution ↗</a>
+        <p class="footer-note">These buttons search directly within the <strong>@itsdrdan</strong> channel so students land on your matching redox videos even if titles are updated later.</p>
+      </section>
+    </aside>
+  </div>
+</div>
+
+<script>
+const modes = [
+  {id:"ox",title:"Oxidation States",short:"Assign oxidation numbers"},
+  {id:"half",title:"Half-Reaction Method",short:"Balance + identify REDOX roles"},
+  {id:"activity",title:"Activity Series",short:"Will a reaction occur?"},
+  {id:"acid",title:"Acidic REDOX",short:"Balance in acidic solution"},
+  {id:"base",title:"Basic REDOX",short:"Balance in basic solution"}
+];
+
+const oxQuestions = [
+ {f:"O₂",target:"O",ans:"0",hint:"A pure element has an oxidation state of 0.",why:"O₂ is an elemental form, so O = 0."},
+ {f:"Na₂S₂O₃",target:"S (average)",ans:"2",hint:"Na = +1 and O = −2. The oxidation states must add to 0.",why:"2(+1) + 2(S) + 3(−2) = 0, so the average S oxidation state is +2."},
+ {f:"Mg₂P₂O₇",target:"P",ans:"5",hint:"Mg = +2 and O = −2.",why:"2(+2) + 2(P) + 7(−2) = 0, so P = +5."},
+ {f:"Hg₂Cl₂",target:"Hg",ans:"1",hint:"Cl is usually −1.",why:"2(Hg) + 2(−1) = 0, so each Hg = +1."},
+ {f:"H₂O₂",target:"O",ans:"-1",hint:"This is a peroxide — an exception to the usual oxygen rule.",why:"In a peroxide, O = −1."},
+ {f:"KMnO₄",target:"Mn",ans:"7",hint:"K = +1 and O = −2.",why:"+1 + Mn + 4(−2)=0, so Mn = +7."},
+ {f:"Cr₂O₇²⁻",target:"Cr",ans:"6",hint:"The oxidation-state sum must equal the ion charge (−2).",why:"2(Cr)+7(−2)=−2, so Cr = +6."},
+ {f:"NH₄⁺",target:"N",ans:"-3",hint:"H is +1 in this ion.",why:"N + 4(+1)=+1, so N = −3."},
+ {f:"SO₄²⁻",target:"S",ans:"6",hint:"O is −2 and the sum equals −2.",why:"S + 4(−2)=−2, so S = +6."},
+ {f:"ClO₃⁻",target:"Cl",ans:"5",hint:"O is −2. The oxidation-state sum equals −1.",why:"Cl + 3(−2)=−1, so Cl = +5."},
+ {f:"Fe₂O₃",target:"Fe",ans:"3",hint:"O is −2.",why:"2(Fe)+3(−2)=0, so Fe = +3."},
+ {f:"CaH₂",target:"H",ans:"-1",hint:"Hydrogen is usually +1, but metal hydrides are an exception.",why:"Ca is +2, so each H must be −1."},
+ {f:"BrF₄⁻",target:"Br",ans:"3",hint:"F is always −1. The sum equals −1.",why:"Br + 4(−1)=−1, so Br = +3."},
+ {f:"C₂H₆",target:"C (average)",ans:"-3",hint:"H = +1 with a nonmetal.",why:"2(C)+6(+1)=0, so each C averages −3."}
+];
+
+const halfQuestions = [
+ {eq:["Zn","Cu²⁺","Zn²⁺","Cu"],coef:[1,1,1,1],oxidized:"Zn",reduced:"Cu",oa:"Cu²⁺",ra:"Zn",hint:"Zn loses 2 e⁻; Cu²⁺ gains 2 e⁻.",why:"Zn → Zn²⁺ + 2e⁻ (oxidation); Cu²⁺ + 2e⁻ → Cu (reduction)."},
+ {eq:["Al","Cu²⁺","Al³⁺","Cu"],coef:[2,3,2,3],oxidized:"Al",reduced:"Cu",oa:"Cu²⁺",ra:"Al",hint:"Al loses 3 e⁻ while Cu²⁺ gains 2 e⁻. Use the LCM of 6 electrons.",why:"2Al + 3Cu²⁺ → 2Al³⁺ + 3Cu."},
+ {eq:["Sn²⁺","Fe³⁺","Sn⁴⁺","Fe²⁺"],coef:[1,2,1,2],oxidized:"Sn",reduced:"Fe",oa:"Fe³⁺",ra:"Sn²⁺",hint:"Sn²⁺ loses 2 e⁻; each Fe³⁺ gains 1 e⁻.",why:"Sn²⁺ + 2Fe³⁺ → Sn⁴⁺ + 2Fe²⁺."},
+ {eq:["Cl₂","Br⁻","Cl⁻","Br₂"],coef:[1,2,2,1],oxidized:"Br",reduced:"Cl",oa:"Cl₂",ra:"Br⁻",hint:"Br⁻ is oxidized to Br₂; Cl₂ is reduced to Cl⁻.",why:"Cl₂ + 2Br⁻ → 2Cl⁻ + Br₂."},
+ {eq:["Fe³⁺","I⁻","Fe²⁺","I₂"],coef:[2,2,2,1],oxidized:"I",reduced:"Fe",oa:"Fe³⁺",ra:"I⁻",hint:"Two I⁻ together lose 2 e⁻; two Fe³⁺ each gain 1 e⁻.",why:"2Fe³⁺ + 2I⁻ → 2Fe²⁺ + I₂."},
+ {eq:["Mg","Ag⁺","Mg²⁺","Ag"],coef:[1,2,1,2],oxidized:"Mg",reduced:"Ag",oa:"Ag⁺",ra:"Mg",hint:"Mg loses 2 e⁻; Ag⁺ gains 1 e⁻ each.",why:"Mg + 2Ag⁺ → Mg²⁺ + 2Ag."}
+];
+
+const metalSeries = ["Li","Rb","K","Ba","Ca","Na","Mg","Al","Mn","Zn","Cr","Fe","Co","Ni","Sn","Pb","H₂","Cu","Ag","Hg","Pt","Au"];
+const halogenSeries = ["F₂","Cl₂","Br₂","I₂"];
+
+const activityQuestions = [
+ {rxn:"Zn(s) + Cu²⁺(aq) → ?",yes:true,prod:"Zn²⁺(aq) + Cu(s)",why:"Zn is above Cu in the activity series, so Zn is oxidized and Cu²⁺ is reduced."},
+ {rxn:"Cu(s) + Zn²⁺(aq) → ?",yes:false,prod:"No reaction",why:"Cu is below Zn, so Cu cannot displace Zn²⁺ under the activity-series rule."},
+ {rxn:"Mg(s) + 2H⁺(aq) → ?",yes:true,prod:"Mg²⁺(aq) + H₂(g)",why:"Mg is above H₂, so Mg can reduce H⁺ to H₂."},
+ {rxn:"Ag(s) + H⁺(aq) → ?",yes:false,prod:"No reaction",why:"Ag is below H₂, so Ag does not displace H⁺ in this model."},
+ {rxn:"Al(s) + Fe³⁺(aq) → ?",yes:true,prod:"Al³⁺(aq) + Fe (redox occurs)",why:"Al is above Fe, so the oxidation of Al is favored relative to Fe."},
+ {rxn:"Sn(s) + Zn²⁺(aq) → ?",yes:false,prod:"No reaction",why:"Sn is below Zn."},
+ {rxn:"Cl₂(aq) + 2Br⁻(aq) → ?",yes:true,prod:"2Cl⁻(aq) + Br₂(aq)",why:"Cl₂ is above Br₂ in the halogen activity series and is more easily reduced."},
+ {rxn:"I₂(aq) + 2Cl⁻(aq) → ?",yes:false,prod:"No reaction",why:"I₂ is below Cl₂ and cannot oxidize Cl⁻ in this activity-series model."},
+ {rxn:"F₂(aq) + 2Br⁻(aq) → ?",yes:true,prod:"2F⁻(aq) + Br₂(aq)",why:"F₂ is the strongest oxidizer in the listed halogen series."},
+ {rxn:"Br₂(aq) + 2I⁻(aq) → ?",yes:true,prod:"2Br⁻(aq) + I₂(aq)",why:"Br₂ is above I₂ and can oxidize I⁻."}
+];
+
+const acidQuestions = [
+ {eq:["MnO₄⁻","Fe²⁺","H⁺","Mn²⁺","Fe³⁺","H₂O"],coef:[1,5,8,1,5,4],
+ hint:"Reduction: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O. Oxidation: Fe²⁺ → Fe³⁺ + e⁻.",
+ why:"MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O."},
+ {eq:["Cr₂O₇²⁻","Fe²⁺","H⁺","Cr³⁺","Fe³⁺","H₂O"],coef:[1,6,14,2,6,7],
+ hint:"Cr₂O₇²⁻ gains 6 e⁻ total. Balance O with 7H₂O and H with 14H⁺.",
+ why:"Cr₂O₇²⁻ + 6Fe²⁺ + 14H⁺ → 2Cr³⁺ + 6Fe³⁺ + 7H₂O."},
+ {eq:["MnO₄⁻","H₂O₂","H⁺","Mn²⁺","O₂","H₂O"],coef:[2,5,6,2,5,8],
+ hint:"H₂O₂ → O₂ + 2H⁺ + 2e⁻; MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O.",
+ why:"2MnO₄⁻ + 5H₂O₂ + 6H⁺ → 2Mn²⁺ + 5O₂ + 8H₂O."},
+ {eq:["NO₃⁻","Cu","H⁺","NO","Cu²⁺","H₂O"],coef:[2,3,8,2,3,4],
+ hint:"NO₃⁻ → NO is a 3-electron reduction; Cu → Cu²⁺ is a 2-electron oxidation.",
+ why:"2NO₃⁻ + 3Cu + 8H⁺ → 2NO + 3Cu²⁺ + 4H₂O."},
+ {eq:["IO₃⁻","I⁻","H⁺","I₂","H₂O"],coef:[1,5,6,3,3],
+ hint:"Balance iodine first, then O with H₂O, H with H⁺, and charge with electrons.",
+ why:"IO₃⁻ + 5I⁻ + 6H⁺ → 3I₂ + 3H₂O."}
+];
+
+const baseQuestions = [
+ {eq:["MnO₄⁻","I⁻","H₂O","MnO₂","I₂","OH⁻"],coef:[2,6,4,2,3,8],
+ hint:"First balance as if acidic, then add OH⁻ to both sides to neutralize H⁺ and simplify water.",
+ why:"2MnO₄⁻ + 6I⁻ + 4H₂O → 2MnO₂ + 3I₂ + 8OH⁻."},
+ {eq:["MnO₄⁻","SO₃²⁻","H₂O","MnO₂","SO₄²⁻","OH⁻"],coef:[2,3,1,2,3,2],
+ hint:"Use the acidic half-reaction method first, then convert H⁺ to H₂O with OH⁻.",
+ why:"2MnO₄⁻ + 3SO₃²⁻ + H₂O → 2MnO₂ + 3SO₄²⁻ + 2OH⁻."},
+ {eq:["ClO⁻","Cr(OH)₃","OH⁻","Cl⁻","CrO₄²⁻","H₂O"],coef:[3,2,4,3,2,5],
+ hint:"Cr goes from +3 to +6; Cl in ClO⁻ goes from +1 to −1.",
+ why:"3ClO⁻ + 2Cr(OH)₃ + 4OH⁻ → 3Cl⁻ + 2CrO₄²⁻ + 5H₂O."},
+ {eq:["CN⁻","MnO₄⁻","H₂O","CNO⁻","MnO₂","OH⁻"],coef:[3,2,1,3,2,2],
+ hint:"C in CN⁻ is oxidized; Mn in MnO₄⁻ is reduced. Balance in acid first, then neutralize H⁺.",
+ why:"3CN⁻ + 2MnO₄⁻ + H₂O → 3CNO⁻ + 2MnO₂ + 2OH⁻."}
+];
+
+let state={mode:"ox",idx:0,correct:0,streak:0,answered:0,selected:null};
+const $=id=>document.getElementById(id);
+
+function subscript(s){
+ return s
+ .replace(/([A-Za-z\)])(\d+)/g,(m,a,n)=>a+n.replace(/\d/g,d=>"₀₁₂₃₄₅₆₇₈₉"[+d]))
+ .replace(/\^?(\d*)([+-])/g,(m,n,sgn)=>{
+   const su=(n||"").replace(/\d/g,d=>"⁰¹²³⁴⁵⁶⁷⁸⁹"[+d]);
+   return su+(sgn==="+"?"⁺":"⁻");
+ });
+}
+function chem(s){return `<span class="chem">${subscript(s)}</span>`}
+
+function buildModes(){
+ $("modeGrid").innerHTML=modes.map(m=>`<button class="mode-btn ${m.id===state.mode?"active":""}" data-mode="${m.id}">
+ <div>${m.title}</div><small>${m.short}</small></button>`).join("");
+ document.querySelectorAll(".mode-btn").forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;state.idx=0;state.selected=null;buildModes();render()});
+}
+function currentBank(){
+ return state.mode==="ox"?oxQuestions:state.mode==="half"?halfQuestions:state.mode==="activity"?activityQuestions:state.mode==="acid"?acidQuestions:baseQuestions;
+}
+function pick(){
+ const bank=currentBank();
+ return bank[state.idx%bank.length];
+}
+function referenceHTML(){
+ if(state.mode==="ox") return `<h3>🧠 Oxidation-State Rules</h3>
+ <ul class="ref-list">
+ <li>Pure element = 0</li><li>Monatomic ion = ion charge</li>
+ <li>Group 1 = +1; Group 2 = +2</li><li>F = −1</li>
+ <li>H is usually +1</li><li>O is usually −2; peroxide O = −1</li>
+ <li>The total must equal the compound/ion charge</li></ul>`;
+ if(state.mode==="activity") return `<h3>📊 Activity Series</h3>
+ <div class="series"><b>Metals — most easily oxidized at top</b><br>${metalSeries.join(" > ")}</div>
+ <div class="series" style="margin-top:9px"><b>Halogens — most easily reduced at top</b><br>${halogenSeries.join(" > ")}</div>
+ <p class="footer-note">For metals, the free metal must be higher than the metal (or H₂) it is trying to displace.</p>`;
+ const basicExtra=state.mode==="base"?`<div class="step"><b>8</b><span>For basic solution, add OH⁻ to both sides to neutralize H⁺, form H₂O, then cancel extra water.</span></div>`:"";
+ return `<h3>⚖️ Half-Reaction Checklist</h3><div class="step-list">
+ <div class="step"><b>1</b><span>Determine oxidation numbers.</span></div>
+ <div class="step"><b>2</b><span>Write oxidation and reduction half-reactions.</span></div>
+ <div class="step"><b>3</b><span>Balance atoms other than H and O.</span></div>
+ <div class="step"><b>4</b><span>Add H₂O to balance O; add H⁺ to balance H.</span></div>
+ <div class="step"><b>5</b><span>Add e⁻ to balance charge.</span></div>
+ <div class="step"><b>6</b><span>Multiply half-reactions so electrons are equal.</span></div>
+ <div class="step"><b>7</b><span>Add, cancel matching species, and reduce coefficients.</span></div>
+ ${basicExtra}</div>`;
+}
+
+function render(){
+ const m=modes.find(x=>x.id===state.mode);
+ $("modeTitle").textContent=m.title;
+ $("correct").textContent=state.correct;
+ $("streak").textContent=state.streak;
+ $("progressBar").style.width=((state.answered%10)*10)+"%";
+ $("referenceCard").innerHTML=referenceHTML();
+ $("feedback").className="feedback";$("feedback").innerHTML="";
+ $("hintBox").className="hintbox";$("hintBox").innerHTML="";
+ state.selected=null;
+ const q=pick();
+
+ if(state.mode==="ox"){
+  $("questionArea").innerHTML=`<p class="prompt">Assign the oxidation state of <strong>${q.target}</strong> in ${chem(q.f)}.</p>
+  <div class="answer-area"><div class="field"><label>Oxidation state</label><input id="oxInput" type="text" placeholder="Examples: +3, -2, 0"></div></div>`;
+ } else if(state.mode==="activity"){
+  $("questionArea").innerHTML=`<p class="prompt">Use the activity series to decide whether this reaction will occur.</p>
+  <div class="equation-box">${chem(q.rxn)}</div>
+  <div class="option-grid">
+   <button class="option" data-val="yes">✅ Reaction occurs</button>
+   <button class="option" data-val="no">🚫 No reaction</button>
+  </div>`;
+  document.querySelectorAll(".option").forEach(b=>b.onclick=()=>{document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");state.selected=b.dataset.val});
+ } else if(state.mode==="half"){
+   const opts=[q.oxidized,q.reduced,q.oa,q.ra,...["Zn","Cu","Fe","Al","Cl₂","Br⁻","Fe³⁺","I⁻"]].filter((v,i,a)=>a.indexOf(v)===i);
+   const uniq=[...new Set(opts)];
+   $("questionArea").innerHTML=`<p class="prompt">Balance the redox equation, then identify what is oxidized/reduced and the oxidizing/reducing agents.</p>
+   ${coeffEquation(q.eq)}
+   <div class="field-row" style="margin-top:14px">
+    ${selectField("oxidized","Species / element oxidized",uniq)}
+    ${selectField("reduced","Species / element reduced",uniq)}
+    ${selectField("oa","Oxidizing agent",uniq)}
+    ${selectField("ra","Reducing agent",uniq)}
+   </div>`;
+ } else {
+   $("questionArea").innerHTML=`<p class="prompt">Balance the following reaction in <strong>${state.mode==="acid"?"acidic":"basic"}</strong> solution using the half-reaction method.</p>
+   ${coeffEquation(q.eq)}
+   <p class="footer-note">Enter whole-number coefficients. Use 1 when a coefficient is implied.</p>`;
+ }
+}
+
+function coeffEquation(eq){
+ const split=Math.ceil(eq.length/2);
+ const left=eq.slice(0,split), right=eq.slice(split);
+ const make=(s,i)=>`<span class="coeff"><input type="number" min="0" step="1" data-coeff="${i}" aria-label="coefficient for ${s}"> ${chem(s)}</span>`;
+ return `<div class="equation-box coeffs">${left.map((s,i)=>make(s,i)).join(" + ")} <span class="arrow">→</span> ${right.map((s,i)=>make(s,i+split)).join(" + ")}</div>`;
+}
+function selectField(id,label,opts){
+ return `<div class="field"><label>${label}</label><select id="${id}"><option value="">Choose...</option>${opts.map(o=>`<option>${o}</option>`).join("")}</select></div>`;
+}
+function norm(v){return String(v).trim().replace("+","").replace("−","-")}
+function coeffsCorrect(q){
+ const vals=[...document.querySelectorAll("[data-coeff]")].map(x=>Number(x.value||0));
+ return vals.length===q.coef.length && vals.every((v,i)=>v===q.coef[i]);
+}
+function check(){
+ const q=pick(); let ok=false, msg="";
+ if(state.mode==="ox"){
+   const v=norm($("oxInput").value);
+   ok=v===norm(q.ans);
+   msg=ok?q.why:`Not quite. ${q.hint}`;
+ } else if(state.mode==="activity"){
+   ok=state.selected===(q.yes?"yes":"no");
+   msg=ok?`${q.prod}. ${q.why}`:`Check the relative positions in the activity series. ${q.why}`;
+ } else if(state.mode==="half"){
+   const c=coeffsCorrect(q);
+   const labels=$("oxidized").value===q.oxidized && $("reduced").value===q.reduced && $("oa").value===q.oa && $("ra").value===q.ra;
+   ok=c&&labels;
+   msg=ok?q.why:`Check both the electron balance and the role labels. ${q.hint}`;
+ } else {
+   ok=coeffsCorrect(q);
+   msg=ok?q.why:`Recheck atom count and total charge. ${q.hint}`;
+ }
+ $("feedback").className="feedback "+(ok?"good":"bad");
+ $("feedback").innerHTML=(ok?"✅ Correct! ":"🔎 Keep working. ")+msg;
+ state.answered++;
+ if(ok){state.correct++;state.streak++;confetti()} else state.streak=0;
+ $("correct").textContent=state.correct;$("streak").textContent=state.streak;
+ $("progressBar").style.width=((state.answered%10)*10)+"%";
+}
+function hint(){
+ const q=pick();$("hintBox").innerHTML="💡 "+q.hint;$("hintBox").classList.add("show");
+}
+function show(){
+ const q=pick();
+ let ans="";
+ if(state.mode==="ox") ans=`${q.target} = ${q.ans>0?"+":""}${q.ans}. ${q.why}`;
+ else if(state.mode==="activity") ans=`${q.yes?"Reaction occurs":"No reaction"}. ${q.prod}. ${q.why}`;
+ else if(state.mode==="half") ans=`Coefficients: ${q.coef.join(", ")}<br>Oxidized: <b>${q.oxidized}</b> · Reduced: <b>${q.reduced}</b><br>Oxidizing agent: <b>${q.oa}</b> · Reducing agent: <b>${q.ra}</b><br>${q.why}`;
+ else ans=`Coefficients from left to right: <b>${q.coef.join(", ")}</b><br>${q.why}`;
+ $("feedback").className="feedback good";$("feedback").innerHTML="👀 Answer: "+ans;
+}
+function next(){
+ const bank=currentBank();state.idx=(state.idx+1)%bank.length;render();
+}
+function confetti(){
+ const box=$("celebrate"), colors=["#ff7d73","#70b7e8","#8fd8c8","#f7c968","#b9a3e6","#f2a8c4"];
+ for(let i=0;i<36;i++){
+   const p=document.createElement("i");p.className="confetti";
+   p.style.left=Math.random()*100+"vw";p.style.top="-20px";p.style.background=colors[i%colors.length];
+   p.style.animationDelay=(Math.random()*.25)+"s";p.style.transform=`rotate(${Math.random()*180}deg)`;
+   box.appendChild(p);setTimeout(()=>p.remove(),1600);
+ }
+}
+
+$("checkBtn").onclick=check;$("hintBtn").onclick=hint;$("showBtn").onclick=show;$("nextBtn").onclick=next;
+buildModes();render();
+</script>
+</body>
+</html>
