@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Oxidation & Reduction Study Game | Dr. Dan</title>
+<title>Oxidation & Reduction Study Game • Version 3 | Dr. Dan</title>
 <style>
 :root{
   --ink:#263238;
@@ -158,15 +158,23 @@ input:focus,select:focus{border-color:#6baed9;box-shadow:0 0 0 3px rgba(107,174,
   .btn-row{grid-template-columns:1fr 1fr}
   .prompt{font-size:18px}
 }
+
+/* Version 3 guided practice additions */
+.app{max-width:1420px}.hidden{display:none!important}button:disabled{cursor:default;opacity:.6}.hero:after{pointer-events:none}.mode-directions{background:#eef8ff;border:1px solid #d4e9f5;border-radius:13px;padding:11px 13px;color:#3e596d;font-size:14px;line-height:1.5}.practice-filter{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0 18px}.practice-filter label{font-size:14px;font-weight:800}.practice-filter select{flex:1;min-width:190px}fieldset{border:0;padding:0;margin:0;min-width:0}fieldset:disabled input,fieldset:disabled select{background:#edf8f1;color:#263238;opacity:1}.table-scroll{width:100%;overflow:auto}.ox-chart{width:100%;border-collapse:collapse;background:#fff;margin:12px 0}.ox-chart th,.ox-chart td{padding:12px 9px;border:1px solid #e7e2d7;text-align:center;min-width:95px}.ox-chart th{background:#f5f0fc}.ox-chart th:first-child{min-width:115px}.ox-chart input{min-width:72px;text-align:center}.notice{font-size:14px;background:#fff7df;border:1px solid #efdb9b;border-radius:12px;padding:12px;line-height:1.5}.field-status{display:block;min-height:18px;font-size:12px;line-height:1.4;margin:4px 0}.good-text{color:#247644}.bad-text{color:#9e3631}.entry-good{border-color:#50a974!important;background:#f1fbf5!important}.entry-bad{border-color:#cd746c!important}.field label{color:#43515a}.stage-heading{display:flex;gap:10px;align-items:center;margin:17px 0 12px}.stage-heading h3{margin:0;font-size:19px}.half-display{display:grid;gap:9px;margin:12px 0;padding:13px;border:1px solid #e7e2d7;background:#faf8f2;border-radius:14px;font-size:18px;overflow-wrap:anywhere}.half-display strong{display:block;font-size:13px;color:#65727a;margin-bottom:3px}.chem{white-space:nowrap}.chem sub{font-size:.75em;vertical-align:sub;line-height:0}.chem sup{font-size:.75em;vertical-align:super;line-height:0}.phase{font-size:.8em}.chem-separator{margin:0 3px}.coeff{display:inline-flex;gap:5px;align-items:center;flex-wrap:wrap}.coeff .field-status{flex-basis:100%;font-family:system-ui;font-weight:600}.equation-box{overflow-wrap:anywhere}.skeleton{background:#eef8ff}.work-history{border:1px solid #d2e4d7;border-radius:14px;background:#f8fcf8;padding:12px;margin:15px 0}.work-history summary{cursor:pointer;font-weight:850;color:#356747}.history-step{padding:12px 2px;border-top:1px solid #e1eae1;line-height:1.7;overflow-wrap:anywhere}.history-step>strong{font-size:13px;display:block}.continue{display:block;width:100%;margin-top:14px;min-height:48px}.mnemonic{font-size:13px;line-height:1.7}.contextual-video{background:#eef8ff;border:2px solid #b5d7ed}.source-note{padding:12px}.series+.series{margin-top:9px}.confetti{animation:fall 2.8s ease-out forwards}.field-row{align-items:start}.btn-row .action{min-height:48px}.progress{margin-bottom:15px}.footer-note a{color:#39769b}
+@media(max-width:620px){.ox-chart th,.ox-chart td{padding:9px 6px}.ox-chart{font-size:14px}.coeff input{width:55px}.equation-box,.half-display{font-size:18px}.stage-heading{align-items:start}.btn-row{grid-template-columns:repeat(2,minmax(0,1fr))}.action{padding:12px 8px}.card{min-width:0}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.confetti{display:none}.progress>div,.option{transition:none}}
+
+.question-top-controls{display:flex;justify-content:flex-end;margin:12px 0 16px}.question-top-controls .action{min-height:48px;padding:12px 24px}.btn-row{grid-template-columns:1.4fr 1fr 1fr}.atom-state{display:inline-grid;grid-template-rows:auto auto;vertical-align:baseline;text-align:center;position:relative;padding-top:1em}.atom-state .state-label{position:absolute;top:-.1em;left:50%;transform:translateX(-50%);font:700 .55em/1.2 system-ui;color:#7544a0;white-space:nowrap}.equation-caption{font-weight:800;margin:16px 0 6px;color:#43515a}.final-equation{background:#ecf9ef;border:2px solid #91c9a1}.lesson-player{width:100%;aspect-ratio:16/9;border:0;border-radius:13px;background:#222}.lesson-list{display:grid;gap:7px;max-height:380px;overflow:auto}.lesson{display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px;padding:8px;border:1px solid #e3ddeb;border-radius:11px;background:white;text-align:left;color:#37434e;align-items:center;cursor:pointer}.lesson img{width:92px;aspect-ratio:16/9;object-fit:cover;border-radius:7px}.lesson strong{font-size:13px;line-height:1.35}.lesson.active{background:#eef8ff;border:2px solid #88b7d8}.lesson:focus-visible{outline:3px solid #7544a0}
+@media(max-width:620px){.btn-row{grid-template-columns:1fr 1fr}.btn-row .primary{grid-column:1/-1}.question-top-controls .action{width:100%}}
 </style>
 </head>
 <body>
 <div class="celebrate" id="celebrate"></div>
 <div class="app">
   <section class="hero">
-    <span class="badge">⚡ Dr. Dan's REDOX Lab</span>
+    <span class="badge">⚡ Dr. Dan's REDOX Lab • CHEM 1A • Version 3</span>
     <h1><span class="red">Oxidation</span> &amp; <span class="blue">Reduction</span> Study Game</h1>
-    <p class="subtitle">Practice oxidation states, identifying oxidation/reduction and agents, activity-series predictions, and balancing redox reactions in acidic or basic solution.</p>
+    <p class="subtitle">Choose a mode to practice oxidation states, predict reactivity, or build a balanced REDOX equation one step at a time.</p>
   </section>
 
   <nav class="mode-grid" id="modeGrid"></nav>
@@ -177,10 +185,11 @@ input:focus,select:focus{border-color:#6baed9;box-shadow:0 0 0 3px rgba(107,174,
         <h2 class="mode-title" id="modeTitle">Assigning Oxidation States</h2>
         <div class="score">
           <span class="pill">Correct: <span id="correct">0</span></span>
-          <span class="pill">Streak: <span id="streak">0</span> 🔥</span>
+          <span class="pill">Streak: <span id="streak">0</span> 🔥</span><span class="pill">Assisted: <span id="assisted">0</span></span>
         </div>
       </div>
-      <div class="progress"><div id="progressBar"></div></div>
+      <div class="question-top-controls"><button class="action next" id="nextBtn">New Question ↻</button></div>
+      <p class="footer-note" id="progressLabel" aria-live="polite"></p><div class="progress"><div id="progressBar"></div></div><p class="mode-directions" id="modeDirections"></p><div id="oxFilter" class="practice-filter"><label for="oxStyle">Question types</label><select id="oxStyle"><option value="mixed">Mixed: individual + charts</option><option value="single">Individual oxidation states</option><option value="chart">Complete oxidation-state charts</option></select></div>
 
       <div id="questionArea"></div>
 
@@ -188,28 +197,27 @@ input:focus,select:focus{border-color:#6baed9;box-shadow:0 0 0 3px rgba(107,174,
         <button class="action primary" id="checkBtn">Check Answer</button>
         <button class="action secondary" id="hintBtn">Hint</button>
         <button class="action secondary" id="showBtn">Show Answer</button>
-        <button class="action next" id="nextBtn">New Question</button>
+
       </div>
-      <div class="hintbox" id="hintBox"></div>
-      <div class="feedback" id="feedback"></div>
+      <button class="action next continue hidden" id="continueBtn">Continue to next step →</button><div class="hintbox" id="hintBox"></div>
+      <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
     </section>
 
     <aside>
       <section class="card reference" id="referenceCard"></section>
       <section class="card videos">
-        <h3>🎥 Helpful Dr. Dan Videos</h3>
-        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=oxidation%20numbers">Oxidation Numbers / Oxidation States ↗</a>
-        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=oxidation%20reduction%20redox">Oxidation &amp; Reduction / REDOX ↗</a>
-        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=activity%20series">Activity Series ↗</a>
-        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=acidic%20redox">Balancing REDOX in Acidic Solution ↗</a>
-        <a class="video-link" target="_blank" rel="noopener" href="https://www.youtube.com/@itsdrdan/search?query=basic%20redox">Balancing REDOX in Basic Solution ↗</a>
-        <p class="footer-note">These buttons search directly within the <strong>@itsdrdan</strong> channel so students land on your matching redox videos even if titles are updated later.</p>
+        <h3>🎥 Learn with Dr. Dan</h3><p class="footer-note" id="videoContext"></p>
+        <iframe id="lessonPlayer" class="lesson-player" title="Dr. Dan chemistry lesson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p id="lessonTitle" class="footer-note"></p><div id="lessonList" class="lesson-list" aria-label="Choose a video"></div>
+        <p class="footer-note">Try the step first. Pause the video to practice, then resume when you need help. <a id="watchLesson" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
       </section>
     </aside>
   </div>
+<p class="footer-note source-note">Practice follows Dr. Dan’s lecture and activity-series handout. Additional original examples are informed by <a href="https://openstax.org/books/chemistry-2e/pages/17-exercises" target="_blank" rel="noopener">OpenStax Chemistry 2e, Chapter 17.1 exercises</a>.</p>
 </div>
 
 <script>
+
 const modes = [
   {id:"ox",title:"Oxidation States",short:"Assign oxidation numbers"},
   {id:"half",title:"Half-Reaction Method",short:"Balance + identify REDOX roles"},
@@ -293,161 +301,167 @@ const baseQuestions = [
  why:"3CN⁻ + 2MnO₄⁻ + H₂O → 3CNO⁻ + 2MnO₂ + 2OH⁻."}
 ];
 
-let state={mode:"ox",idx:0,correct:0,streak:0,answered:0,selected:null};
+
+// Version 3: original question banks are retained above. New practice follows Dr. Dan's classroom sequence.
+const chartQuestions=[
+ {f:'KMnO4',states:{K:1,Mn:7,O:-2}}, {f:'H2O2',states:{H:1,O:-1},note:'Peroxide oxygen has oxidation state −1.'},
+ {f:'Cr2O7^2-',states:{Cr:6,O:-2}}, {f:'NH4^+',states:{N:-3,H:1}}, {f:'SO4^2-',states:{S:6,O:-2}},
+ {f:'Na2S2O3',states:{Na:1,S:2,O:-2},note:'Enter the AVERAGE sulfur oxidation state (+2). The two sulfur atoms are not equivalent: their individual states are +5 and −1.'},
+ {f:'Mg2P2O7',states:{Mg:2,P:5,O:-2}}, {f:'Hg2Cl2',states:{Hg:1,Cl:-1}}, {f:'Fe2O3',states:{Fe:3,O:-2}},
+ {f:'CaH2',states:{Ca:2,H:-1},note:'This is a metal hydride: H is −1.'}, {f:'BrF4^-',states:{Br:3,F:-1}},
+ {f:'C2H6',states:{C:-3,H:1}}, {f:'ClO3^-',states:{Cl:5,O:-2}}, {f:'O2',states:{O:0}},
+ {f:'Na2O2',states:{Na:1,O:-1},note:'Na2O2 is a peroxide, so O is −1.'}, {f:'OF2',states:{O:2,F:-1},note:'Fluorine is −1; oxygen is +2 in OF2.'},
+ {f:'H3PO4',states:{H:1,P:5,O:-2}}, {f:'NO3^-',states:{N:5,O:-2}}, {f:'SO3^2-',states:{S:4,O:-2}},
+ {f:'MnO2',states:{Mn:4,O:-2}}, {f:'CO2',states:{C:4,O:-2}}, {f:'CH4',states:{C:-4,H:1}},
+ {f:'NaClO',states:{Na:1,Cl:1,O:-2}}, {f:'Al2(SO4)3',states:{Al:3,S:6,O:-2}},
+ {f:'HCO3^-',states:{H:1,C:4,O:-2}}, {f:'Cu(NO3)2',states:{Cu:2,N:5,O:-2}},
+ {f:'LiH',states:{Li:1,H:-1},note:'Hydrogen is −1 in a metal hydride.'}, {f:'IO4^-',states:{I:7,O:-2}}
+];
 const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+const subDigits='₀₁₂₃₄₅₆₇₈₉',superDigits='⁰¹²³⁴⁵⁶⁷⁸⁹';
+function canon(raw){let s=String(raw).trim().replace(/\((aq|s|l|g)\)$/,'');s=s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻]+$/g,t=>'^'+[...t].map(c=>c==='⁺'?'+':c==='⁻'?'-':String(superDigits.indexOf(c))).join(''));return s.replace(/[₀₁₂₃₄₅₆₇₈₉]/g,c=>subDigits.indexOf(c)).replace(/−/g,'-')}
+function chem(raw){const parts=String(raw).split(/(\s+\+\s+|\s*→\s*)/);return parts.map(p=>/^\s*([+→])\s*$/.test(p)?' <span class="chem-separator">'+p.trim()+'</span> ':speciesHTML(p)).join('')}
+function speciesHTML(raw){let s=String(raw).trim();if(s==='?'||s==='No reaction')return esc(s);let phase=s.match(/\((aq|s|l|g)\)$/)?.[0]||'';s=s.replace(/\((aq|s|l|g)\)$/,'');let coefficient=s.match(/^(\d+)\s*(?=[A-Z])/)?.[1]||'';if(coefficient)s=s.replace(/^\d+\s*/,'');s=canon(s);const charge=s.match(/\^(\d*[+-])$/)?.[1]||'';s=s.replace(/\^\d*[+-]$/,'');return (coefficient?esc(coefficient)+' ':'')+'<span class="chem">'+esc(s).replace(/\d+/g,n=>'<sub>'+n+'</sub>')+(charge?'<sup>'+esc(charge.replace('-','−'))+'</sup>':'')+'</span>'+(phase?'<span class="phase">'+phase+'</span>':'')}
+function plainSpecies(s){s=canon(s);const ch=s.match(/\^(\d*[+-])$/)?.[1]||'';return s.replace(/\^\d*[+-]$/,'').replace(/\d/g,d=>subDigits[+d])+(ch?[...ch].map(c=>/\d/.test(c)?superDigits[+c]:c==='+'?'⁺':'⁻').join(''):'')}
+function signed(n){return n>0?'+'+n:String(n).replace('-','−')}
+function numberValue(raw){let s=String(raw).trim().replace(/−/g,'-');if(/^[+-]?\d+\s*\/\s*\d+$/.test(s)){const [a,b]=s.split('/').map(Number);return b?a/b:NaN}return /^[+-]?(?:\d+\.?\d*|\.\d+)$/.test(s)?Number(s):NaN}
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a),lcm=(a,b)=>a*b/gcd(a,b);
+function atoms(raw){const species=canon(raw);const body=species.replace(/\^\d*[+-]$/,'');if(body==='e')return {};let i=0;function parse(){const out={};while(i<body.length&&body[i]!==')'){let part={};if(body[i]==='('){i++;part=parse();if(body[i]!==')')throw Error('Unclosed formula '+body);i++}else{const m=body.slice(i).match(/^[A-Z][a-z]?/);if(!m)throw Error('Invalid formula '+body);i+=m[0].length;part[m[0]]=1}const m=body.slice(i).match(/^\d+/);const n=m?Number(m[0]):1;if(m)i+=m[0].length;for(const [el,v] of Object.entries(part))out[el]=(out[el]||0)+v*n}return out}const result=parse();if(i!==body.length)throw Error('Invalid formula '+body);return result}
+function charge(raw){const s=canon(raw);if(s==='e^-')return -1;const m=s.match(/\^(\d*)([+-])$/);return m?(Number(m[1]||1)*(m[2]==='+'?1:-1)):0}
+function cloneEq(eq){return {L:{...eq.L},R:{...eq.R}}}
+function add(map,s,n){if(n)map[s]=(map[s]||0)+n}
+function totals(map){const out={charge:0};for(const [s,n] of Object.entries(map)){out.charge+=charge(s)*n;for(const [el,v] of Object.entries(atoms(s)))out[el]=(out[el]||0)+v*n}return out}
+function conservation(eq){const a=totals(eq.L),b=totals(eq.R);for(const el of new Set([...Object.keys(a),...Object.keys(b)])){if((a[el]||0)!==(b[el]||0))return {ok:false,element:el,left:a[el]||0,right:b[el]||0}}return {ok:true}}
+function simplify(eq){const e=cloneEq(eq),cancel={};for(const s of Object.keys(e.L)){const n=Math.min(e.L[s]||0,e.R[s]||0);if(n){cancel[s]=n;e.L[s]-=n;e.R[s]-=n}}for(const side of [e.L,e.R])for(const s of Object.keys(side))if(!side[s])delete side[s];const divisor=Object.values({...e.L,...Object.fromEntries(Object.entries(e.R).map(([s,n])=>['R'+s,n]))}).reduce(gcd);if(divisor>1)for(const side of [e.L,e.R])for(const s of Object.keys(side))side[s]/=divisor;return {eq:e,cancel,divisor}}
+function equationHTML(eq){const side=map=>Object.entries(map).map(([s,n])=>(n===1?'':n+' ')+chem(s)).join(' <span class="chem-separator">+</span> ');return side(eq.L)+' <span class="arrow">→</span> '+side(eq.R)}
+function equationPlain(eq){const side=map=>Object.entries(map).map(([s,n])=>(n===1?'':n+' ')+plainSpecies(s)).join(' + ');return side(eq.L)+' → '+side(eq.R)}
+function scaleEq(eq,n){return {L:Object.fromEntries(Object.entries(eq.L).map(([s,v])=>[s,v*n])),R:Object.fromEntries(Object.entries(eq.R).map(([s,v])=>[s,v*n]))}}
+function balanceHalf(pair,simple=false){const from=canon(pair.from),to=canon(pair.to),a=atoms(from),b=atoms(to);const el=Object.keys(a).find(k=>k!=='H'&&k!=='O'&&b[k])||(simple?pair.el:null);let ca=1,cb=1;if(el){const g=gcd(a[el],b[el]);ca=b[el]/g;cb=a[el]/g}const eq={L:{[from]:ca},R:{[to]:cb}},initial=cloneEq(eq);
+ function balanceWith(target,species){const x=totals(eq.L)[target]||0,y=totals(eq.R)[target]||0,n=Math.abs(x-y);const side=x<y?'L':x>y?'R':'none';if(n)add(eq[side],species,n);return {side,n,eq:cloneEq(eq)}}
+ const water=simple?{side:'none',n:0,eq:cloneEq(eq)}:balanceWith('O','H2O');const hydrogen=simple?{side:'none',n:0,eq:cloneEq(eq)}:balanceWith('H','H^+');const x=totals(eq.L).charge,y=totals(eq.R).charge,ne=Math.abs(x-y),side=x>y?'L':x<y?'R':'none';if(ne)add(eq[side],'e^-',ne);const electron={side,n:ne,eq:cloneEq(eq)};if(!conservation(eq).ok||!ne)throw Error('Invalid half-reaction '+from+' → '+to);return {from,to,ca,cb,initial,water,hydrogen,electron,eq:cloneEq(eq)}}
+function reaction(reactants,products,ox,red){return {reactants:reactants.map(canon),products:products.map(canon),ox:{from:canon(ox[0]),to:canon(ox[1]),el:ox[2],before:ox[3],after:ox[4]},red:{from:canon(red[0]),to:canon(red[1]),el:red[2],before:red[3],after:red[4]}}}
+const halfMeta=[
+ reaction(['Zn','Cu^2+'],['Zn^2+','Cu'],['Zn','Zn^2+','Zn',0,2],['Cu^2+','Cu','Cu',2,0]),
+ reaction(['Al','Cu^2+'],['Al^3+','Cu'],['Al','Al^3+','Al',0,3],['Cu^2+','Cu','Cu',2,0]),
+ reaction(['Sn^2+','Fe^3+'],['Sn^4+','Fe^2+'],['Sn^2+','Sn^4+','Sn',2,4],['Fe^3+','Fe^2+','Fe',3,2]),
+ reaction(['Cl2','Br^-'],['Cl^-','Br2'],['Br^-','Br2','Br',-1,0],['Cl2','Cl^-','Cl',0,-1]),
+ reaction(['Fe^3+','I^-'],['Fe^2+','I2'],['I^-','I2','I',-1,0],['Fe^3+','Fe^2+','Fe',3,2]),
+ reaction(['Mg','Ag^+'],['Mg^2+','Ag'],['Mg','Mg^2+','Mg',0,2],['Ag^+','Ag','Ag',1,0]),
+ reaction(['Fe','Cl2'],['Fe^3+','Cl^-'],['Fe','Fe^3+','Fe',0,3],['Cl2','Cl^-','Cl',0,-1]),
+ reaction(['Cu','Ag^+'],['Cu^2+','Ag'],['Cu','Cu^2+','Cu',0,2],['Ag^+','Ag','Ag',1,0]),
+ reaction(['Al','Ni^2+'],['Al^3+','Ni'],['Al','Al^3+','Al',0,3],['Ni^2+','Ni','Ni',2,0]),
+ reaction(['Ca','F2'],['Ca^2+','F^-'],['Ca','Ca^2+','Ca',0,2],['F2','F^-','F',0,-1]),
+ reaction(['Li','Cl2'],['Li^+','Cl^-'],['Li','Li^+','Li',0,1],['Cl2','Cl^-','Cl',0,-1]),
+ reaction(['Br2','I^-'],['Br^-','I2'],['I^-','I2','I',-1,0],['Br2','Br^-','Br',0,-1]),
+ reaction(['Zn','H^+'],['Zn^2+','H2'],['Zn','Zn^2+','Zn',0,2],['H^+','H2','H',1,0]),
+ reaction(['Cr','Sn^4+'],['Cr^3+','Sn^2+'],['Cr','Cr^3+','Cr',0,3],['Sn^4+','Sn^2+','Sn',4,2]),
+ reaction(['Fe^2+','Ce^4+'],['Fe^3+','Ce^3+'],['Fe^2+','Fe^3+','Fe',2,3],['Ce^4+','Ce^3+','Ce',4,3]),
+ reaction(['H2','Cu^2+'],['H^+','Cu'],['H2','H^+','H',0,1],['Cu^2+','Cu','Cu',2,0])
+];
+const acidMeta=[
+ reaction(['MnO4^-','Fe^2+'],['Mn^2+','Fe^3+'],['Fe^2+','Fe^3+','Fe',2,3],['MnO4^-','Mn^2+','Mn',7,2]),
+ reaction(['Cr2O7^2-','Fe^2+'],['Cr^3+','Fe^3+'],['Fe^2+','Fe^3+','Fe',2,3],['Cr2O7^2-','Cr^3+','Cr',6,3]),
+ reaction(['MnO4^-','H2O2'],['Mn^2+','O2'],['H2O2','O2','O',-1,0],['MnO4^-','Mn^2+','Mn',7,2]),
+ reaction(['NO3^-','Cu'],['NO','Cu^2+'],['Cu','Cu^2+','Cu',0,2],['NO3^-','NO','N',5,2]),
+ reaction(['IO3^-','I^-'],['I2'],['I^-','I2','I',-1,0],['IO3^-','I2','I',5,0]),
+ reaction(['H2O2','Sn^2+'],['H2O','Sn^4+'],['Sn^2+','Sn^4+','Sn',2,4],['H2O2','H2O','O',-1,-2]),
+ reaction(['PbO2','Hg'],['Hg2^2+','Pb^2+'],['Hg','Hg2^2+','Hg',0,1],['PbO2','Pb^2+','Pb',4,2]),
+ reaction(['Al','Cr2O7^2-'],['Al^3+','Cr^3+'],['Al','Al^3+','Al',0,3],['Cr2O7^2-','Cr^3+','Cr',6,3]),
+ reaction(['H2S','NO3^-'],['S','NO'],['H2S','S','S',-2,0],['NO3^-','NO','N',5,2]),
+ reaction(['MnO4^-','H2O2'],['MnO2','O2'],['H2O2','O2','O',-1,0],['MnO4^-','MnO2','Mn',7,4]),
+ reaction(['Sn^2+','NO'],['Sn','NO3^-'],['NO','NO3^-','N',2,5],['Sn^2+','Sn','Sn',2,0])
+];
+const baseMeta=[
+ reaction(['MnO4^-','I^-'],['MnO2','I2'],['I^-','I2','I',-1,0],['MnO4^-','MnO2','Mn',7,4]),
+ reaction(['MnO4^-','SO3^2-'],['MnO2','SO4^2-'],['SO3^2-','SO4^2-','S',4,6],['MnO4^-','MnO2','Mn',7,4]),
+ reaction(['ClO^-','Cr(OH)3'],['Cl^-','CrO4^2-'],['Cr(OH)3','CrO4^2-','Cr',3,6],['ClO^-','Cl^-','Cl',1,-1]),
+ reaction(['CN^-','MnO4^-'],['CNO^-','MnO2'],['CN^-','CNO^-','C',2,4],['MnO4^-','MnO2','Mn',7,4]),
+ reaction(['SO3^2-','Cu(OH)2'],['SO4^2-','CuOH'],['SO3^2-','SO4^2-','S',4,6],['Cu(OH)2','CuOH','Cu',2,1]),
+ reaction(['O2','Mn(OH)2'],['MnO2'],['Mn(OH)2','MnO2','Mn',2,4],['O2','H2O','O',0,-2]),
+ reaction(['NO3^-','H2'],['NO'],['H2','H^+','H',0,1],['NO3^-','NO','N',5,2]),
+ reaction(['Al','CrO4^2-'],['Al(OH)3','Cr(OH)4^-'],['Al','Al(OH)3','Al',0,3],['CrO4^2-','Cr(OH)4^-','Cr',6,3]),
+ reaction(['ClO3^-','MnO2'],['Cl^-','MnO4^-'],['MnO2','MnO4^-','Mn',4,7],['ClO3^-','Cl^-','Cl',5,-1])
+];
+// Extra examples apply the same classroom activity-series model.
+const metalsCharge={Li:1,Rb:1,K:1,Ba:2,Ca:2,Na:1,Mg:2,Al:3,Mn:2,Zn:2,Cr:3,Fe:2,Co:2,Ni:2,Sn:2,Pb:2,Cu:2,Ag:1,Hg:2,Pt:2,Au:3};
+for(const [a,b] of [['Mg','Cr'],['Cr','Mg'],['Al','Fe'],['Fe','Al'],['Zn','Ag'],['Ag','Zn'],['Ni','Cu'],['Cu','Ni'],['Fe','Pb'],['Pb','Fe'],['Sn','Cu'],['Cu','Sn'],['Mg','Zn'],['Zn','Mg'],['Co','Ag'],['Ag','Co']]){const yes=metalSeries.indexOf(a)<metalSeries.indexOf(b),ca=metalsCharge[a],cb=metalsCharge[b],g=gcd(ca,cb);activityQuestions.push({rxn:`${a}(s) + ${plainSpecies(b+'^'+cb+'+')}(aq) → ?`,yes,prod:yes?`${cb/g===1?'':cb/g+' '}${plainSpecies(a+'^'+ca+'+')}(aq) + ${ca/g===1?'':ca/g+' '}${b}(s)`:'No reaction',why:yes?`${a} is above ${b}, so ${a} can reduce the ${b} ions in the activity-series model.`:`${a} is below ${b}, so it cannot displace ${b} in the activity-series model.`})}
+// Canonicalize the activity reactant coefficients whenever a displacement occurs.
+for(const q of activityQuestions){if(q.yes&&q.rxn.startsWith('Al(s) + Fe³⁺'))q.prod='Al³⁺(aq) + Fe(s)';}
+let state={mode:'ox',idx:0,indices:{ox:0,half:0,activity:0,acid:0,base:0},correct:0,streak:0,answered:0,selected:null,oxStyle:'mixed',revealed:false,complete:false,stage:0,stageDone:false,history:[],q:null,stages:[]};
+function currentBank(){return state.mode==='ox'?oxQuestions:state.mode==='half'?halfMeta:state.mode==='activity'?activityQuestions:state.mode==='acid'?acidMeta:baseMeta}
+function chooseQuestion(){if(state.mode!=='ox')return currentBank()[state.indices[state.mode]%currentBank().length];const i=state.indices.ox;if(state.oxStyle==='chart')return {...chartQuestions[i%chartQuestions.length],chart:true};if(state.oxStyle==='single')return oxQuestions[i%oxQuestions.length];return i%2?{...chartQuestions[Math.floor(i/2)%chartQuestions.length],chart:true}:oxQuestions[Math.floor(i/2)%oxQuestions.length]}
+function field(id,label,answer,type='number',opts=[]){return {id,label,answer,type,opts}}
+function selectField(f){return `<div class="field"><label for="${f.id}">${f.label}</label><select id="${f.id}" data-field="${f.id}"><option value="">Choose…</option>${f.opts.map(o=>{const v=typeof o==='string'?o:o.value,l=typeof o==='string'?plainSpecies(o):o.label;return `<option value="${esc(v)}">${esc(l)}</option>`}).join('')}</select><small class="field-status" id="status-${f.id}"></small></div>`}
+function inputField(f){return `<div class="field"><label for="${f.id}">${f.label}</label><input id="${f.id}" data-field="${f.id}" ${f.type==='signed'?'type="text" inputmode="text" placeholder="+3, −2, or 0"':'type="number" inputmode="numeric" min="0" step="1"'} autocomplete="off"><small class="field-status" id="status-${f.id}"></small></div>`}
+function fieldsHTML(fs){return '<div class="field-row">'+fs.map(f=>f.type==='select'?selectField(f):inputField(f)).join('')+'</div>'}
+function coeffFields(eq,prefix='final'){let i=0;const fs=[];function side(map){return Object.entries(map).map(([s,n])=>{const id=prefix+'-'+i++;fs.push(field(id,'Coefficient for '+chem(s),n));return `<label class="coeff"><input id="${id}" data-field="${id}" type="number" min="1" step="1" inputmode="numeric" aria-label="Coefficient for ${esc(plainSpecies(s))}"> ${chem(s)}<small class="field-status" id="status-${id}"></small></label>`}).join('<span class="chem-separator">+</span>')}const html='<div class="equation-box coeffs">'+side(eq.L)+'<span class="arrow">→</span>'+side(eq.R)+'</div>';return {html,fs}}
+function makeStage(title,body,fs,hint,result,diagnostic='Check each entry.'){return {title,body,fields:fs,hint,result,diagnostic}}
+function roleStage(q){const elements=[...new Set(q.reactants.concat(q.products).flatMap(s=>Object.keys(atoms(s))))];const choices=[...new Set([...elements,...q.reactants,...q.products])];const fs=[field('oxidized','Element oxidized',q.ox.el,'select',choices),field('reduced','Element reduced',q.red.el,'select',choices),field('oa','Oxidizing agent',q.red.from,'select',choices),field('ra','Reducing agent',q.ox.from,'select',choices)];return makeStage('Identify the REDOX roles','<p>Select an element for oxidation or reduction, and a reactant species for each agent. All elements and species in the original equation are offered; some are distractors.</p>'+fieldsHTML(fs),fs,'Oxidation increases the oxidation state; reduction decreases it. The oxidizing agent is reduced, and the reducing agent is oxidized.',`Oxidized: <b>${q.ox.el}</b> (${signed(q.ox.before)} → ${signed(q.ox.after)}). Reduced: <b>${q.red.el}</b> (${signed(q.red.before)} → ${signed(q.red.after)}).<br>Oxidizing agent: ${chem(q.red.from)}. Reducing agent: ${chem(q.ox.from)}.`, 'Oxidation is an increase in oxidation state; reduction is a decrease. Name the reactant that undergoes the change for each agent.')}
+function skeletonStage(q,h,name){const fs=[field(name+'-from','Reactant species',h.from,'select',q.reactants),field(name+'-to','Product species',h.to,'select',[...new Set([...q.products,h.to])]),field(name+'-ca','Reactant coefficient',h.ca),field(name+'-cb','Product coefficient',h.cb)];return makeStage('Construct the '+name+' half-reaction',`<p>Select the species containing the element ${name==='oxidation'?q.ox.el:q.red.el} and balance ${state.mode==='half'?'its atoms':'all atoms except H and O'}. Use the smallest coefficients, including 1.</p>`+fieldsHTML(fs),fs,'Keep the whole ion or molecule containing the changing element. Balance its atoms before adding electrons.',equationHTML(h.initial),'Choose the reactant and product that contain the changing element, then balance atoms with coefficients—not subscripts.')}
+const sideOpts=[{value:'L',label:'Reactant side (left)'},{value:'R',label:'Product side (right)'},{value:'none',label:'Neither side (add 0)'}];
+function addStage(h,name,kind){const part=h[kind],s=kind==='water'?'H2O':kind==='hydrogen'?'H^+':'e^-';const label=kind==='water'?'Balance oxygen with water':kind==='hydrogen'?'Balance hydrogen with H⁺':'Balance charge with electrons';const prior=kind==='water'?h.initial:kind==='hydrogen'?h.water.eq:h.hydrogen.eq;
+ const fs=[field(name+'-'+kind+'-side','Which side receives '+chem(s)+'?',part.side,'select',sideOpts),field(name+'-'+kind+'-n','How many '+chem(s)+'?',part.n)];
+ const hint=kind==='water'?'Compare O atoms and add one H₂O for each missing O atom. If O is already balanced, select neither and enter 0.':kind==='hydrogen'?'After adding water, compare H atoms. Add H⁺ to the side short of H. If H is balanced, enter 0.':name==='oxidation'?'LEO: oxidation loses electrons, so e⁻ belongs on the product side. Use enough electrons to equalize charge.':'GER: reduction gains electrons, so e⁻ belongs on the reactant side. Use enough electrons to equalize charge.';
+ return makeStage(name[0].toUpperCase()+name.slice(1)+': '+label,`<div class="equation-box">${equationHTML(prior)}</div>`+fieldsHTML(fs),fs,hint,equationHTML(part.eq),kind==='electron'?'Compare total charge on each side, including the atom-balancing coefficients. Each electron lowers its side’s charge by 1.':hint)}
+function combineHalves(ox,red){const mo=lcm(ox.electron.n,red.electron.n)/ox.electron.n,mr=lcm(ox.electron.n,red.electron.n)/red.electron.n;const o=scaleEq(ox.eq,mo),r=scaleEq(red.eq,mr),sum={L:{},R:{}};for(const side of ['L','R'])for(const map of [o[side],r[side]])for(const [s,n] of Object.entries(map))add(sum[side],s,n);return {mo,mr,o,r,sum,...simplify(sum)}}
+function reorder(eq,q){const ordered=cloneEq(eq);for(const [side,list] of [['L',q.reactants],['R',q.products]]){const order=[...new Set([...list,...Object.keys(eq[side])])];ordered[side]=Object.fromEntries(order.filter(s=>eq[side][s]).map(s=>[s,eq[side][s]]))}return ordered}
+function basicConversion(acid){const intermediate=cloneEq(acid),side=acid.L['H^+']?'L':acid.R['H^+']?'R':'none',n=side==='none'?0:acid[side]['H^+'];if(n){add(intermediate.L,'OH^-',n);add(intermediate.R,'OH^-',n)}const after=cloneEq(intermediate);if(n){delete after[side]['H^+'];after[side]['OH^-']-=n;if(!after[side]['OH^-'])delete after[side]['OH^-'];add(after[side],'H2O',n)}return {n,side,intermediate,after,...simplify(after)}}
+function buildGuided(q,mode){const simple=mode==='half',ox=balanceHalf(q.ox,simple),red=balanceHalf(q.red,simple),combined=combineHalves(ox,red);if(ox.electron.side!=='R'||red.electron.side!=='L')throw Error('REDOX directions disagree');q.oxHalf=ox;q.redHalf=red;q.combined=combined;q.acidFinal=reorder(combined.eq,q);q.final=mode==='base'?reorder(basicConversion(q.acidFinal).eq,q):q.acidFinal;
+ const stages=[];if(!simple){const fs=[field('os-ox-before',q.ox.el+' in '+chem(q.ox.from),q.ox.before,'signed'),field('os-ox-after',q.ox.el+' in '+chem(q.ox.to),q.ox.after,'signed'),field('os-red-before',q.red.el+' in '+chem(q.red.from),q.red.before,'signed'),field('os-red-after',q.red.el+' in '+chem(q.red.to),q.red.after,'signed')];stages.push(makeStage('Determine oxidation numbers',fieldsHTML(fs),fs,'Use the oxidation-state rules. Peroxide O is −1; the sum equals the species charge.',`${q.ox.el}: ${signed(q.ox.before)} → ${signed(q.ox.after)}; ${q.red.el}: ${signed(q.red.before)} → ${signed(q.red.after)}.`, 'Use the total charge and known oxidation states. Distinguish an oxidation number from an ion charge.'))}
+ stages.push(roleStage(q));for(const [h,name] of [[ox,'oxidation'],[red,'reduction']]){stages.push(skeletonStage(q,h,name));if(!simple)stages.push(addStage(h,name,'water'),addStage(h,name,'hydrogen'));stages.push(addStage(h,name,'electron'))}
+ const multfs=[field('mult-ox','Oxidation multiplier',combined.mo),field('mult-red','Reduction multiplier',combined.mr)];stages.push(makeStage('Equalize electrons',`<div class="half-display"><div><strong>Oxidation</strong>${equationHTML(ox.eq)}</div><div><strong>Reduction</strong>${equationHTML(red.eq)}</div></div>`+fieldsHTML(multfs),multfs,`Find the least common multiple of ${ox.electron.n} and ${red.electron.n} electrons. Divide it by each half-reaction’s electron count.`,`${equationHTML(combined.o)}<br>${equationHTML(combined.r)}`, 'Use the smallest pair of whole-number multipliers that makes electron loss equal electron gain.'));
+ const cf=coeffFields(q.acidFinal,'combine'),cancelFs=Object.entries(combined.cancel).map(([s,n],i)=>field('cancel-'+i,'Number of '+chem(s)+' canceled from EACH side',n));const finalStage=makeStage(simple?'Cancel electrons and combine':'Combine and simplify in acidic form',`<p>Add these multiplied half-reactions. Cancel equal amounts on both sides, then use the smallest final coefficients.</p><div class="half-display"><div>${equationHTML(combined.o)}</div><div>${equationHTML(combined.r)}</div></div>${fieldsHTML(cancelFs)}${cf.html}`, [...cancelFs,...cf.fs],'Cancel electrons and any common H₂O or H⁺. If every remaining coefficient shares a factor, divide all coefficients by it.',equationHTML(q.acidFinal),'Check both atoms and total charge. Electrons must cancel completely, and coefficients must be the smallest whole numbers.');finalStage.equation=q.acidFinal;finalStage.coeffIds=cf.fs.map(f=>f.id);stages.push(finalStage);
+ if(mode==='base'){const basic=basicConversion(q.acidFinal);q.basic=basic;const fs=[field('oh-L','OH⁻ added to the LEFT side',basic.n),field('oh-R','OH⁻ added to the RIGHT side',basic.n)];stages.push(makeStage('Neutralize H⁺ with OH⁻',`<div class="equation-box">${equationHTML(q.acidFinal)}</div><p>Add the same number of OH⁻ ions to both sides: one OH⁻ for each H⁺.</p>`+fieldsHTML(fs),fs,'H⁺ + OH⁻ → H₂O. Preserve equality by adding OH⁻ to both sides.',equationHTML(basic.intermediate),'Use the H⁺ coefficient in the combined equation. Add that SAME number of OH⁻ to both sides.'));
+ const waterFs=[field('water-formed','H₂O molecules formed by neutralization',basic.n),field('water-cancel','H₂O molecules canceled from EACH side',basic.cancel.H2O||0)];stages.push(makeStage('Form water and cancel extra water',`<div class="equation-box">${equationHTML(basic.intermediate)}</div><p>Replace each H⁺ + OH⁻ pair with H₂O, then cancel the matching water.</p>`+fieldsHTML(waterFs),waterFs,'Each neutralized H⁺ makes one water molecule. After forming water, cancel the smaller H₂O count from both sides.',`${equationHTML(basic.after)}<br><strong>After cancellation:</strong> ${equationHTML(q.final)}`,'Count newly formed water separately from water already present. Cancel only equal amounts appearing on both sides.'));
+ const bf=coeffFields(q.final,'basic');const st=makeStage('Write the final basic equation',`<p>Enter the simplest coefficients. The final equation contains no H⁺ or electrons.</p>${bf.html}`,bf.fs,'Use the equation after OH⁻ neutralization and water cancellation. Verify atoms and charge.',equationHTML(q.final),'Check atoms, charge, and simplest coefficients after neutralizing H⁺.');st.equation=q.final;st.coeffIds=bf.fs.map(f=>f.id);stages.push(st)}
+ return stages}
+function buildModes(){ $('modeGrid').innerHTML=modes.map(m=>`<button class="mode-btn ${m.id===state.mode?'active':''}" data-mode="${m.id}" aria-pressed="${m.id===state.mode}">${m.title}<small>${m.short}</small></button>`).join('');$('modeGrid').querySelectorAll('button').forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;state.idx=state.indices[state.mode];buildModes();startQuestion()})}
+function updateStats(){ $('correct').textContent=state.correct;$('streak').textContent=state.streak;$('assisted').textContent=state.assisted||0; }
+function feedback(type,msg){$('feedback').className='feedback '+type;$('feedback').innerHTML=msg}
+function clearFeedback(){ $('feedback').className='feedback';$('feedback').innerHTML='';$('hintBox').className='hintbox';$('hintBox').innerHTML=''; }
+function referenceHTML(){if(state.mode==='ox')return `<h3>🧠 Oxidation-State Rules</h3><ul class="ref-list"><li>Pure element = 0.</li><li>Monatomic ion = ion charge.</li><li>Group 1 = +1; Group 2 = +2.</li><li>F = −1.</li><li>H is usually +1; metal hydrides: −1.</li><li>O is usually −2; peroxides: −1. In OF₂, O = +2.</li><li>Sum each state × atom count; the total equals the species charge.</li></ul><p class="footer-note">For chemically nonequivalent atoms, a formula may give only an average. Thiosulfate’s sulfur average is +2; individual S atoms are +5 and −1.</p>`;if(state.mode==='activity')return `<h3>📊 Activity Series</h3><div class="series"><strong>Metals: most easily oxidized at top</strong><br>${metalSeries.join(' > ')}</div><div class="series"><strong>Halogens: most easily reduced at top</strong><br>${halogenSeries.join(' > ')}</div><p class="footer-note">A free metal above another metal (or H₂) can displace it in this classroom model. Acid questions use nonoxidizing acids; nitrate can behave differently.</p>`;return `<h3>⚖️ Half-Reaction Checklist</h3><p class="mnemonic"><b>LEO</b>: Loss of Electrons is Oxidation.<br><b>GER</b>: Gain of Electrons is Reduction.</p><ol class="ref-list"><li>Determine oxidation numbers and REDOX roles.</li><li>Write the oxidation and reduction half-reactions.</li><li>Balance atoms other than H and O.</li><li>Add H₂O to balance O, then H⁺ to balance H.</li><li>Add electrons to balance charge.</li><li>Use the smallest multipliers to equalize electrons.</li><li>Combine and cancel matching species.</li>${state.mode==='base'?'<li>Neutralize H⁺ with OH⁻ on both sides; form and cancel water.</li>':''}</ol><p class="footer-note">Check atoms AND charge. A revealed step marks the entire question as assisted, so it earns no score.</p>`}
+const LESSONS=[
+ ['IsypcIC7XqA','Introduction to Oxidation and Reduction: LEO goes GER!'],
+ ['txENA0lLLg4','How to Balance REDOX Reactions in Acidic Solutions'],
+ ['zr0Y2hF_aOE','How to Balance REDOX Reactions in Basic Solutions'],
+ ['t65x7RaFeFY','How to Balance Chemical Reactions'],
+ ['YqZjFTpnHjc','Tips and Tricks on Predicting and Balancing Chemical Reactions'],
+ ['RsPUbM1DivA','How to Write Net Ionic Equations: Precipitation Reactions']
+];
+let videoMode=null,selectedLesson=-1;
+function showLesson(i){selectedLesson=i;const [id,title]=LESSONS[i];$('lessonPlayer').src='https://www.youtube.com/embed/'+id;$('lessonPlayer').title=title;$('lessonTitle').textContent=title;$('watchLesson').href='https://www.youtube.com/watch?v='+id;document.querySelectorAll('[data-lesson]').forEach(b=>{const active=Number(b.dataset.lesson)===i;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))})}
+function updateVideos(){if(!$('lessonList').children.length){$('lessonList').innerHTML=LESSONS.map(([id,title],i)=>`<button type="button" class="lesson" data-lesson="${i}"><img loading="lazy" alt="" src="https://img.youtube.com/vi/${id}/hqdefault.jpg"><strong>${esc(title)}</strong></button>`).join('');$('lessonList').addEventListener('click',e=>{const b=e.target.closest('[data-lesson]');if(b)showLesson(Number(b.dataset.lesson))})}const stage=state.stages[state.stage];$('videoContext').textContent='Practice help: '+(stage?.title||modes.find(m=>m.id===state.mode).title);if(videoMode!==state.mode){videoMode=state.mode;showLesson(state.mode==='acid'?1:state.mode==='base'?2:0)}}
+function annotatedSpecies(raw,q){const states={};for(const role of [q.ox,q.red]){if(canon(raw)===canon(role.from))states[role.el]=role.before;if(canon(raw)===canon(role.to))states[role.el]=role.after}const html=speciesHTML(raw);return html.replace(/(<span class="chem">)([^<]*(?:<sub>\d+<\/sub>[^<]*)*)/,(_,open,formula)=>open+formula.replace(/[A-Z][a-z]?/g,el=>el in states?`<span class="atom-state"><span class="state-label" aria-label="oxidation state ${signed(states[el])}">${signed(states[el])}</span><span>${el}</span></span>`:el))}
+function updateOriginalDisplay(){const box=$('originalEquation');if(!box)return;const q=state.q;const annotated=['acid','base'].includes(state.mode)&&(state.stage>0||state.stageDone);const render=sp=>annotated?annotatedSpecies(sp,q):speciesHTML(sp);box.innerHTML=q.reactants.map(render).join(' + ')+' → '+q.products.map(render).join(' + ');$('stateLegend').classList.toggle('hidden',!annotated)}
 
-function subscript(s){
- return s
- .replace(/([A-Za-z\)])(\d+)/g,(m,a,n)=>a+n.replace(/\d/g,d=>"₀₁₂₃₄₅₆₇₈₉"[+d]))
- .replace(/\^?(\d*)([+-])/g,(m,n,sgn)=>{
-   const su=(n||"").replace(/\d/g,d=>"⁰¹²³⁴⁵⁶⁷⁸⁹"[+d]);
-   return su+(sgn==="+"?"⁺":"⁻");
- });
-}
-function chem(s){return `<span class="chem">${subscript(s)}</span>`}
+function startQuestion(){state.q=chooseQuestion();state.stage=0;state.stageDone=false;state.complete=false;state.revealed=false;state.revealedStep=false;state.history=[];state.selected=null;state.stages=['half','acid','base'].includes(state.mode)?buildGuided(state.q,state.mode):[]; $('modeTitle').textContent=modes.find(m=>m.id===state.mode).title;$('referenceCard').innerHTML=referenceHTML();$('oxFilter').classList.toggle('hidden',state.mode!=='ox');$('oxStyle').value=state.oxStyle;renderQuestion();updateStats()}
+function renderQuestion(){clearFeedback();$('checkBtn').disabled=false;$('hintBtn').disabled=false;$('showBtn').disabled=false;$('continueBtn').classList.add('hidden');state.stageDone=false;const q=state.q;
+ $('modeDirections').textContent=state.mode==='ox'?'Enter signed oxidation states. In chart questions, complete every element; correct entries are marked as you check.':state.mode==='activity'?'Choose whether a reaction occurs using the activity series. Then check your choice.':'Solve one step at a time. Check Step locks correct work; Continue unlocks the next step. Hint helps you reason; Show Step marks this problem as assisted.';
+ const guided=!!state.stages.length;$('checkBtn').textContent=guided?'Check Step':'Check Answer';$('showBtn').textContent=guided?'Show Step':'Show Answer';$('progressLabel').textContent=guided?`Step ${state.stage+1} of ${state.stages.length}`:`Question ${state.indices[state.mode]+1} • ${q.chart?'Full chart':state.mode==='ox'?'Individual state':'Activity series'}`;$('progressBar').style.width=guided?(state.stage/state.stages.length*100)+'%':(state.complete?'100%':'0%');
+ if(guided){const skeleton={L:Object.fromEntries(q.reactants.map(s=>[s,1])),R:Object.fromEntries(q.products.map(s=>[s,1]))};const stage=state.stages[state.stage];$('questionArea').innerHTML=`<p class="equation-caption">Original (unbalanced)</p><div id="originalEquation" class="equation-box skeleton">${equationHTML(skeleton)}</div><p id="stateLegend" class="footer-note hidden">Assigned oxidation states appear above their element symbols. Ionic charges stay at the upper right.</p><div id="finalAnswer" class="hidden"><p class="equation-caption">Final answer</p><div id="finalEquation" class="equation-box final-equation"></div></div><p class="footer-note">Skeleton equation • ${state.mode==='base'?'basic solution (use acidic balancing first)':state.mode==='acid'?'acidic solution':'electron transfer'}</p><div id="history"></div><div class="stage-heading"><span class="pill">${state.stage+1} / ${state.stages.length}</span><h3>${esc(stage.title)}</h3></div><fieldset id="stepFields">${stage.body}</fieldset>`;renderHistory();updateOriginalDisplay();}
+ else if(state.mode==='ox'){if(q.chart){const cols=Object.keys(q.states);$('questionArea').innerHTML=`<p class="prompt">Assign the oxidation state of every element in ${chem(q.f)}.</p>${q.note?'<p class="notice">'+chemNote(q.note)+'</p>':''}<div class="table-scroll"><table class="ox-chart"><thead><tr><th scope="row">Element</th>${cols.map(el=>`<th scope="col">${esc(el+(el==='S'&&q.f==='Na2S2O3'?' (average)':''))}</th>`).join('')}</tr></thead><tbody><tr><th scope="row">Oxidation state</th>${cols.map(el=>`<td><input type="text" id="chart-${el}" data-field="chart-${el}" aria-label="Oxidation state of ${esc(el)}" placeholder="+ / − / 0"><small id="status-chart-${el}" class="field-status"></small></td>`).join('')}</tr></tbody></table></div><p class="footer-note">Enter a state per atom, not the element’s total contribution to the charge.</p>`}
+ else $('questionArea').innerHTML=`<p class="prompt">Assign the oxidation state of <strong>${esc(q.target)}</strong> in ${chem(q.f)}.</p><div class="answer-area">${inputField(field('oxInput','Oxidation state',Number(q.ans),'signed'))}</div>${q.f==='Na₂S₂O₃'?'<p class="notice">Use the average for S. The nonequivalent sulfur atoms have individual states +5 and −1.</p>':''}`;}
+ else{$('questionArea').innerHTML=`<p class="prompt">Will this reaction occur according to the activity series?</p><div class="equation-box">${chem(q.rxn)}</div><div class="option-grid"><button class="option" data-val="yes" aria-pressed="false">✅ Reaction occurs</button><button class="option" data-val="no" aria-pressed="false">🚫 No reaction</button></div>`;$('questionArea').querySelectorAll('.option').forEach(b=>b.onclick=()=>{if(state.complete)return;state.selected=b.dataset.val;$('questionArea').querySelectorAll('.option').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b?'true':'false')})})}
+ updateVideos();}
+function chemNote(s){return esc(s).replace(/Na2O2/g,chem('Na2O2')).replace(/OF2/g,chem('OF2'))}
+function renderHistory(){const el=$('history');if(!el)return;el.innerHTML=state.history.length?'<details class="work-history" '+(state.complete?'open':'')+'><summary>Completed work ('+state.history.length+' steps)</summary>'+state.history.map((h,i)=>`<div class="history-step"><strong>${i+1}. ${esc(h.title)} ${h.assisted?'👀':'✓'}</strong><div>${h.html}</div></div>`).join('')+'</details>':''}
+function setFieldStatus(f,ok,empty=false){const el=$(f.id),status=$('status-'+f.id);if(!el)return;el.classList.toggle('entry-good',ok);el.classList.toggle('entry-bad',!ok);el.setAttribute('aria-invalid',ok?'false':'true');if(status){status.textContent=ok?'✓ Correct':empty?'Enter a value':'Review this entry';status.className='field-status '+(ok?'good-text':'bad-text')}}
+function checkFields(fs){return fs.map(f=>{const el=$(f.id),raw=el.value.trim(),ok=raw!==''&&(f.type==='select'?raw===String(f.answer):Number.isFinite(numberValue(raw))&&Math.abs(numberValue(raw)-Number(f.answer))<1e-9);setFieldStatus(f,ok,!raw);return {f,ok,raw}})}
+function finishQuestion(){if(state.complete)return;state.complete=true;if(state.stages.length){$('finalEquation').innerHTML=equationHTML(state.q.final);$('finalAnswer').classList.remove('hidden')}state.answered++;if(state.revealed){state.assisted=(state.assisted||0)+1;state.streak=0;feedback('good','Completed with an answer reveal. Review your work, then try the next question independently.')}else{state.correct++;state.streak++;confetti();feedback('good','✅ Complete! Atoms and charge are conserved. You earned one point.')}updateStats();$('checkBtn').disabled=true;$('hintBtn').disabled=true;$('showBtn').disabled=true;$('progressBar').style.width='100%';if($('stepFields'))$('stepFields').disabled=true;renderHistory()}
+function check(){if(state.complete||state.stageDone)return;const q=state.q;if(state.stages.length){const st=state.stages[state.stage],results=checkFields(st.fields);if(results.every(x=>x.ok)){state.stageDone=true;updateOriginalDisplay();state.history.push({title:st.title,html:st.result,assisted:state.revealedStep||false});state.revealedStep=false;$('stepFields').disabled=true;$('checkBtn').disabled=true;$('showBtn').disabled=true;$('hintBtn').disabled=true;renderHistory();$('progressBar').style.width=((state.stage+1)/state.stages.length*100)+'%';if(state.stage===state.stages.length-1){finishQuestion()}else{feedback('good','✅ Step correct. Your work is locked in. Continue when you are ready.');$('continueBtn').classList.remove('hidden')}return}
+ state.streak=0;updateStats();let diagnostic=st.diagnostic;if(st.equation&&st.coeffIds.every(id=>$(id).value.trim()&&numberValue($(id).value)>0)){const eq=cloneEq(st.equation),vals=st.coeffIds.map(id=>numberValue($(id).value));let i=0;for(const side of ['L','R'])for(const s of Object.keys(eq[side]))eq[side][s]=vals[i++];const c=conservation(eq);diagnostic=c.ok?'Atoms and charge balance. Now use the smallest whole-number coefficients and the correct cancellation amounts.':c.element==='charge'?`Charge is not balanced: left ${signed(c.left)}, right ${signed(c.right)}.`:`${c.element} atoms are not balanced: left ${c.left}, right ${c.right}.`}
+ feedback('bad','🔎 '+diagnostic+' Correct entries are marked.');return}
+ if(state.mode==='ox'){const fs=q.chart?Object.entries(q.states).map(([el,n])=>field('chart-'+el,el,n,'signed')):[field('oxInput',q.target,Number(q.ans),'signed')];const results=checkFields(fs);if(!results.every(x=>x.ok)){state.streak=0;updateStats();feedback('bad','🔎 '+(q.chart?'Keep the marked correct states. Apply the rules to the remaining entries and make the state × atom counts add to the species charge.':esc(q.hint)));return}finishQuestion();const summary=q.chart?Object.entries(q.states).map(([el,n])=>el+' = '+signed(n)).join('; '):q.why;feedback('good',(state.revealed?'👀 Completed with reveal; no point. ':'✅ Correct! ')+esc(summary));$('questionArea').querySelectorAll('input').forEach(el=>el.readOnly=true)}
+ else{if(!state.selected){feedback('bad','Choose whether the reaction occurs first.');return}if(state.selected!==(q.yes?'yes':'no')){state.streak=0;updateStats();feedback('bad','🔎 '+esc(q.why));return}finishQuestion();feedback('good',(state.revealed?'👀 Completed with reveal; no point. ':'✅ Correct! ')+chem(q.prod)+' — '+esc(q.why));$('questionArea').querySelectorAll('button').forEach(el=>el.disabled=true)}}
+function hint(){if(state.complete||state.stageDone)return;let h=state.stages.length?state.stages[state.stage].hint:state.mode==='ox'?state.q.chart?'Use the oxidation-state rules, including peroxide and hydride exceptions. Multiply each state by its atom count; the total must equal the species charge.':state.q.hint:'Compare the free element with the element in the ion. Metals higher in the list are more easily oxidized; higher halogens are more easily reduced.';$('hintBox').innerHTML='💡 '+esc(h);$('hintBox').className='hintbox show'}
+function show(){if(state.complete||state.stageDone)return;state.revealed=true;state.revealedStep=true;const q=state.q;let result;if(state.stages.length){const st=state.stages[state.stage];for(const f of st.fields)$(f.id).value=f.type==='signed'?signed(f.answer):f.answer;result=st.result}else if(state.mode==='ox'){if(q.chart){for(const [el,n] of Object.entries(q.states))$('chart-'+el).value=signed(n);result=Object.entries(q.states).map(([el,n])=>el+' = '+signed(n)).join('; ')}else{$('oxInput').value=signed(Number(q.ans));result=esc(q.why)}}else{state.selected=q.yes?'yes':'no';$('questionArea').querySelectorAll('.option').forEach(b=>{b.classList.toggle('selected',b.dataset.val===state.selected);b.setAttribute('aria-pressed',b.dataset.val===state.selected?'true':'false')});result=chem(q.prod)+' — '+esc(q.why)}feedback('good','👀 '+result+'<br><small>This question is now assisted and earns no point. Check the step to continue.</small>')}
+function continueStep(){if(!state.stageDone||state.complete)return;state.stage++;state.revealedStep=false;renderQuestion()}
+function next(){state.indices[state.mode]++;state.idx=state.indices[state.mode];state.revealedStep=false;startQuestion()}
+function confetti(){if(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;const box=$('celebrate'),colors=['#ff7d73','#70b7e8','#8fd8c8','#f7c968','#b9a3e6','#f2a8c4'];for(let i=0;i<65;i++){const p=document.createElement('i');p.className='confetti';p.style.left=Math.random()*100+'vw';p.style.top='-20px';p.style.background=colors[i%colors.length];p.style.animationDelay=Math.random()*.5+'s';box.appendChild(p);setTimeout(()=>p.remove(),3600)}}
+$('checkBtn').onclick=check;$('hintBtn').onclick=hint;$('showBtn').onclick=show;$('nextBtn').onclick=next;$('continueBtn').onclick=continueStep;$('oxStyle').onchange=()=>{state.oxStyle=$('oxStyle').value;state.indices.ox=0;startQuestion()};$('questionArea').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName==='INPUT'){e.preventDefault();check()}});
+buildModes();startQuestion();
 
-function buildModes(){
- $("modeGrid").innerHTML=modes.map(m=>`<button class="mode-btn ${m.id===state.mode?"active":""}" data-mode="${m.id}">
- <div>${m.title}</div><small>${m.short}</small></button>`).join("");
- document.querySelectorAll(".mode-btn").forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;state.idx=0;state.selected=null;buildModes();render()});
-}
-function currentBank(){
- return state.mode==="ox"?oxQuestions:state.mode==="half"?halfQuestions:state.mode==="activity"?activityQuestions:state.mode==="acid"?acidQuestions:baseQuestions;
-}
-function pick(){
- const bank=currentBank();
- return bank[state.idx%bank.length];
-}
-function referenceHTML(){
- if(state.mode==="ox") return `<h3>🧠 Oxidation-State Rules</h3>
- <ul class="ref-list">
- <li>Pure element = 0</li><li>Monatomic ion = ion charge</li>
- <li>Group 1 = +1; Group 2 = +2</li><li>F = −1</li>
- <li>H is usually +1</li><li>O is usually −2; peroxide O = −1</li>
- <li>The total must equal the compound/ion charge</li></ul>`;
- if(state.mode==="activity") return `<h3>📊 Activity Series</h3>
- <div class="series"><b>Metals — most easily oxidized at top</b><br>${metalSeries.join(" > ")}</div>
- <div class="series" style="margin-top:9px"><b>Halogens — most easily reduced at top</b><br>${halogenSeries.join(" > ")}</div>
- <p class="footer-note">For metals, the free metal must be higher than the metal (or H₂) it is trying to displace.</p>`;
- const basicExtra=state.mode==="base"?`<div class="step"><b>8</b><span>For basic solution, add OH⁻ to both sides to neutralize H⁺, form H₂O, then cancel extra water.</span></div>`:"";
- return `<h3>⚖️ Half-Reaction Checklist</h3><div class="step-list">
- <div class="step"><b>1</b><span>Determine oxidation numbers.</span></div>
- <div class="step"><b>2</b><span>Write oxidation and reduction half-reactions.</span></div>
- <div class="step"><b>3</b><span>Balance atoms other than H and O.</span></div>
- <div class="step"><b>4</b><span>Add H₂O to balance O; add H⁺ to balance H.</span></div>
- <div class="step"><b>5</b><span>Add e⁻ to balance charge.</span></div>
- <div class="step"><b>6</b><span>Multiply half-reactions so electrons are equal.</span></div>
- <div class="step"><b>7</b><span>Add, cancel matching species, and reduce coefficients.</span></div>
- ${basicExtra}</div>`;
-}
-
-function render(){
- const m=modes.find(x=>x.id===state.mode);
- $("modeTitle").textContent=m.title;
- $("correct").textContent=state.correct;
- $("streak").textContent=state.streak;
- $("progressBar").style.width=((state.answered%10)*10)+"%";
- $("referenceCard").innerHTML=referenceHTML();
- $("feedback").className="feedback";$("feedback").innerHTML="";
- $("hintBox").className="hintbox";$("hintBox").innerHTML="";
- state.selected=null;
- const q=pick();
-
- if(state.mode==="ox"){
-  $("questionArea").innerHTML=`<p class="prompt">Assign the oxidation state of <strong>${q.target}</strong> in ${chem(q.f)}.</p>
-  <div class="answer-area"><div class="field"><label>Oxidation state</label><input id="oxInput" type="text" placeholder="Examples: +3, -2, 0"></div></div>`;
- } else if(state.mode==="activity"){
-  $("questionArea").innerHTML=`<p class="prompt">Use the activity series to decide whether this reaction will occur.</p>
-  <div class="equation-box">${chem(q.rxn)}</div>
-  <div class="option-grid">
-   <button class="option" data-val="yes">✅ Reaction occurs</button>
-   <button class="option" data-val="no">🚫 No reaction</button>
-  </div>`;
-  document.querySelectorAll(".option").forEach(b=>b.onclick=()=>{document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");state.selected=b.dataset.val});
- } else if(state.mode==="half"){
-   const opts=[q.oxidized,q.reduced,q.oa,q.ra,...["Zn","Cu","Fe","Al","Cl₂","Br⁻","Fe³⁺","I⁻"]].filter((v,i,a)=>a.indexOf(v)===i);
-   const uniq=[...new Set(opts)];
-   $("questionArea").innerHTML=`<p class="prompt">Balance the redox equation, then identify what is oxidized/reduced and the oxidizing/reducing agents.</p>
-   ${coeffEquation(q.eq)}
-   <div class="field-row" style="margin-top:14px">
-    ${selectField("oxidized","Species / element oxidized",uniq)}
-    ${selectField("reduced","Species / element reduced",uniq)}
-    ${selectField("oa","Oxidizing agent",uniq)}
-    ${selectField("ra","Reducing agent",uniq)}
-   </div>`;
- } else {
-   $("questionArea").innerHTML=`<p class="prompt">Balance the following reaction in <strong>${state.mode==="acid"?"acidic":"basic"}</strong> solution using the half-reaction method.</p>
-   ${coeffEquation(q.eq)}
-   <p class="footer-note">Enter whole-number coefficients. Use 1 when a coefficient is implied.</p>`;
- }
-}
-
-function coeffEquation(eq){
- const split=Math.ceil(eq.length/2);
- const left=eq.slice(0,split), right=eq.slice(split);
- const make=(s,i)=>`<span class="coeff"><input type="number" min="0" step="1" data-coeff="${i}" aria-label="coefficient for ${s}"> ${chem(s)}</span>`;
- return `<div class="equation-box coeffs">${left.map((s,i)=>make(s,i)).join(" + ")} <span class="arrow">→</span> ${right.map((s,i)=>make(s,i+split)).join(" + ")}</div>`;
-}
-function selectField(id,label,opts){
- return `<div class="field"><label>${label}</label><select id="${id}"><option value="">Choose...</option>${opts.map(o=>`<option>${o}</option>`).join("")}</select></div>`;
-}
-function norm(v){return String(v).trim().replace("+","").replace("−","-")}
-function coeffsCorrect(q){
- const vals=[...document.querySelectorAll("[data-coeff]")].map(x=>Number(x.value||0));
- return vals.length===q.coef.length && vals.every((v,i)=>v===q.coef[i]);
-}
-function check(){
- const q=pick(); let ok=false, msg="";
- if(state.mode==="ox"){
-   const v=norm($("oxInput").value);
-   ok=v===norm(q.ans);
-   msg=ok?q.why:`Not quite. ${q.hint}`;
- } else if(state.mode==="activity"){
-   ok=state.selected===(q.yes?"yes":"no");
-   msg=ok?`${q.prod}. ${q.why}`:`Check the relative positions in the activity series. ${q.why}`;
- } else if(state.mode==="half"){
-   const c=coeffsCorrect(q);
-   const labels=$("oxidized").value===q.oxidized && $("reduced").value===q.reduced && $("oa").value===q.oa && $("ra").value===q.ra;
-   ok=c&&labels;
-   msg=ok?q.why:`Check both the electron balance and the role labels. ${q.hint}`;
- } else {
-   ok=coeffsCorrect(q);
-   msg=ok?q.why:`Recheck atom count and total charge. ${q.hint}`;
- }
- $("feedback").className="feedback "+(ok?"good":"bad");
- $("feedback").innerHTML=(ok?"✅ Correct! ":"🔎 Keep working. ")+msg;
- state.answered++;
- if(ok){state.correct++;state.streak++;confetti()} else state.streak=0;
- $("correct").textContent=state.correct;$("streak").textContent=state.streak;
- $("progressBar").style.width=((state.answered%10)*10)+"%";
-}
-function hint(){
- const q=pick();$("hintBox").innerHTML="💡 "+q.hint;$("hintBox").classList.add("show");
-}
-function show(){
- const q=pick();
- let ans="";
- if(state.mode==="ox") ans=`${q.target} = ${q.ans>0?"+":""}${q.ans}. ${q.why}`;
- else if(state.mode==="activity") ans=`${q.yes?"Reaction occurs":"No reaction"}. ${q.prod}. ${q.why}`;
- else if(state.mode==="half") ans=`Coefficients: ${q.coef.join(", ")}<br>Oxidized: <b>${q.oxidized}</b> · Reduced: <b>${q.reduced}</b><br>Oxidizing agent: <b>${q.oa}</b> · Reducing agent: <b>${q.ra}</b><br>${q.why}`;
- else ans=`Coefficients from left to right: <b>${q.coef.join(", ")}</b><br>${q.why}`;
- $("feedback").className="feedback good";$("feedback").innerHTML="👀 Answer: "+ans;
-}
-function next(){
- const bank=currentBank();state.idx=(state.idx+1)%bank.length;render();
-}
-function confetti(){
- const box=$("celebrate"), colors=["#ff7d73","#70b7e8","#8fd8c8","#f7c968","#b9a3e6","#f2a8c4"];
- for(let i=0;i<36;i++){
-   const p=document.createElement("i");p.className="confetti";
-   p.style.left=Math.random()*100+"vw";p.style.top="-20px";p.style.background=colors[i%colors.length];
-   p.style.animationDelay=(Math.random()*.25)+"s";p.style.transform=`rotate(${Math.random()*180}deg)`;
-   box.appendChild(p);setTimeout(()=>p.remove(),1600);
- }
-}
-
-$("checkBtn").onclick=check;$("hintBtn").onclick=hint;$("showBtn").onclick=show;$("nextBtn").onclick=next;
-buildModes();render();
 </script>
 </body>
 </html>
