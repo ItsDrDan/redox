@@ -52,6 +52,6 @@ run([
   } },
   { q: '?course=1B&mode=cells', check: async (page, ok) => { ok(await page.evaluate(() => state.mode === 'cells'), 'Galvanic Cells opens'); ok(await isBench(page), 'first Galvanic Cells question is a bench (game rule)'); } },
   { q: '?course=1A&mode=cells&bench=1', check: async (page, ok) => { ok(await page.evaluate(() => state.course === '1A' && state.mode === 'ox'), 'cells is 1B only: 1A link falls back to the normal start'); ok(!(await isBench(page)), 'no Cell Bench in 1A'); } },
-  { q: '?course=3A&mode=activity', check: async (page, ok) => { ok(await page.evaluate(() => state.course === '3A' && state.mode === 'ox'), 'activity is 1A only: 3A ignores it'); } },
+  { q: '?course=3A&mode=activity', check: async (page, ok) => { ok(await page.evaluate(() => state.course === '3A' && state.mode === 'activity'), '3A opens the activity series'); ok(await page.evaluate(() => activityBank().length >= 20 && activityBank().every(q => !/[FIB]r?₂|Cl|Rb|Ba|Mn|Cr|Co|Hg|Pt/.test(q.rxn) && !/^(?:\d+ )?(Li|K|Ca|Na)\(s\)/.test(q.rxn))), '3A uses the textbook short list only'); ok(await page.evaluate(() => !/Halogen/.test(document.getElementById('activityChart').innerText)), '3A chart has no halogens'); } },
   { q: '?course=1A&mode=activity', check: async (page, ok) => { ok(await page.evaluate(() => state.mode === 'activity'), 'other modes open too'); } },
 ]);
